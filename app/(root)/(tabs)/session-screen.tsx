@@ -3,6 +3,8 @@ import React from 'react'
 
 import Logo from "../../../assets/images/palpense-logo.png";
 import TotalCard from '../../../components/TotalCard';
+import OrderLog from '../../../components/OrderLog';
+
 const SessionScreen = () => {
   return (
     <SafeAreaView className='h-full bg-white'>
@@ -11,6 +13,8 @@ const SessionScreen = () => {
       </View>
 
       <TotalCard total="₹245" initialStoreName="Tea Mania" />
+
+      <OrderLog />
 
     
     </SafeAreaView>
