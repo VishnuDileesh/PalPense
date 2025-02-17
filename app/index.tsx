@@ -1,16 +1,15 @@
-import { Text, View } from "react-native";
+import { Text, Image, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
+import Logo from "../assets/images/palpense-logo.png";
 
 export default function Index() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text className="font-bold text-2xl text-red-500">Welcome to Palpense</Text>
-    </View>
+    <SafeAreaView className="h-full bg-white">
+      <View className="flex-1 items-center justify-center">
+        <Text className="text-2xl font-bold text-black">Tea Mania</Text>
+      </View>
+      <Image source={Logo}  />
+    </SafeAreaView>
   );
 }
