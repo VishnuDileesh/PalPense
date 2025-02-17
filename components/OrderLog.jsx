@@ -8,8 +8,8 @@ const OrderLog = () => {
 
     const { orders } = useOrderStore()
   return (
-    <ScrollView className='bg-white rounded-2xl p-4 shadow-md mx-6 mt-4 px-2'>
         <FlatList
+        className='bg-white rounded-2xl p-4 shadow-md mx-6 mt-4 px-2'
             data={orders}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
@@ -20,7 +20,6 @@ const OrderLog = () => {
             </View>
             )}
         />
-    </ScrollView>
   )
 }
 
