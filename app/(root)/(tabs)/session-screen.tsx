@@ -4,6 +4,8 @@ import React from 'react'
 import Logo from "../../../assets/images/palpense-logo.png";
 import TotalCard from '../../../components/TotalCard';
 import OrderLog from '../../../components/OrderLog';
+import OrderInput from '../../../components/OrderInput';
+
 
 const SessionScreen = () => {
   return (
@@ -16,6 +18,9 @@ const SessionScreen = () => {
 
       <OrderLog />
 
+      <OrderInput />
+
+     
     
     </SafeAreaView>
   )

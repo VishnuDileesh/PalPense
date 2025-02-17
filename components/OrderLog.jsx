@@ -55,19 +55,17 @@ const orders = [
 const OrderLog = () => {
   return (
     <ScrollView className='bg-white rounded-2xl p-4 shadow-md mx-6 mt-4 px-2'>
-        
         <FlatList
             data={orders}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
             <View className="bg-white p-3 rounded-xl my-1 mx-3 shadow-md self-end">
-                <Text className="text-lg text-[#1E293B]">
-                {item.qty} {item.item} for {item.person}
+                <Text className="text-lg text-primary">
+                {item.qty} {item.item.toLowerCase()} for {item.person.toLowerCase()}
                 </Text>
             </View>
             )}
         />
-
     </ScrollView>
   )
 }
