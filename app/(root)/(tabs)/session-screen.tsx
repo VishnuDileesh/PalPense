@@ -10,7 +10,7 @@ const SessionScreen = () => {
         <Image className="w-48 h-12" resizeMode="contain" source={Logo} />
       </View>
 
-      <TotalCard total={255} storeName="Tea Mania" />
+      <TotalCard total="₹245" initialStoreName="Tea Mania" />
 
     
     </SafeAreaView>
