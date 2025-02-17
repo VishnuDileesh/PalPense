@@ -9,19 +9,20 @@ const OrderInput = () => {
 
     const [input, setInput] = useState("");
 
-
     const handleAddOrder = () => {
+        if (!input.trim()) return; 
+
         const match = input.match(/(\d+)\s+(.+)\s+for\s+(.+)/i);
+
         if (match) {
           const [, qty, item, person] = match;
           addOrder({ id: Date.now(), qty: Number(qty), item, person });
-          setInput("");
+      
+          setInput(""); 
+          Keyboard.dismiss(); 
         }
-
-        Keyboard.dismiss();
       };
-    
-
+      
 
   return (
     <View className='bg-white rounded-2xl p-4 shadow-md mx-6 mt-2 mb-2 px-4'>
