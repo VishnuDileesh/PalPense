@@ -4,20 +4,21 @@ import { useFonts } from "expo-font";
 import "./global.css"
 import { ActivityIndicator, View, Text } from "react-native";
 import { useEffect, Suspense } from "react";
-import { openDatabaseSync, SQLiteProvider } from "expo-sqlite";
-import { drizzle } from "drizzle-orm/expo-sqlite";
+import { SQLiteProvider } from "expo-sqlite";
 import { useMigrations } from "drizzle-orm/expo-sqlite/migrator";
 import migrations from "@/drizzle/migrations";
+import { getDB } from "@/db";
+import { DB_NAME } from "@/config/constants";
+import { useDrizzleStudio } from "expo-drizzle-studio-plugin";
 
-export const DB_NAME = "pense.db";
 
 export default function RootLayout() {
+  const db = getDB();
 
-  const expoDB = openDatabaseSync(DB_NAME);
-
-  const db = drizzle(expoDB);
+  useDrizzleStudio(db);
 
   const { success, error } = useMigrations(db, migrations);
+
 
   const [fontsLoaded] = useFonts({
     Inter: require("../assets/fonts/Inter-Regular.ttf"),

@@ -1,7 +1,7 @@
 import { View, Text, TextInput } from 'react-native'
 import React, { useState} from 'react'
 
-const TotalCard = ({total, initialStoreName}) => {
+const TotalCard = ({total, initialStoreName}: {total: string, initialStoreName: string} ) => {
 
     const [storeName, setStoreName] = useState(initialStoreName || 'Tea Mania');
 
@@ -16,8 +16,6 @@ const TotalCard = ({total, initialStoreName}) => {
             placeholder={storeName || initialStoreName}
             placeholderTextColor="#1E293B"
         />
-            
-        {/* <Text className="text-lg text-[#1E293B]">{storeName}</Text> */}
       </View>
   )
 }
