@@ -1,13 +1,25 @@
-import { Text, Image, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaView, TouchableOpacity, Text } from "react-native";
 
-import Logo from "../../../assets/images/palpense-logo.png";
-import { Link } from "expo-router";
-
+import Header from "../../../components/Header";
+import TotalCard from "../../../components/TotalCard";
+import OrderLog from "../../../components/OrderLog";
+import { router } from "expo-router";
 export default function Index() {
   return (
-    <SafeAreaView className="h-full bg-white">
-      <Link href="/session-screen">Order Log</Link>
+    <SafeAreaView className='h-full bg-white'>
+      
+      <Header />
+
+      <TotalCard total="₹2450" initialStoreName="Jan" />
+
+      <OrderLog />
+
+      <TouchableOpacity onPress={() => router.push('/session-screen')} className="bg-primary p-4 rounded-xl mx-6 my-4">
+        <Text className="text-white text-center text-lg font-semibold">Add Pense</Text>
+      </TouchableOpacity>
+    
+
+
     </SafeAreaView>
   );
 }
