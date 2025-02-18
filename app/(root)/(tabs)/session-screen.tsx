@@ -1,4 +1,4 @@
-import { SafeAreaView } from 'react-native'
+import { SafeAreaView, View } from 'react-native'
 import React from 'react'
 
 import TotalCard from '../../../components/TotalCard';
@@ -15,7 +15,7 @@ const SessionScreen = () => {
       <TotalCard total="₹245" initialStoreName="Tea Mania" />
 
       <OrderLog />
-
+      
       <OrderInput />
     
     </SafeAreaView>

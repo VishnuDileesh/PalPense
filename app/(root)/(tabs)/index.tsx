@@ -5,6 +5,11 @@ import TotalCard from "../../../components/TotalCard";
 import OrderLog from "../../../components/OrderLog";
 import { router } from "expo-router";
 export default function Index() {
+
+  const addPense = () => {
+    router.push('/session-screen')
+  }
+
   return (
     <SafeAreaView className='h-full bg-white'>
       
@@ -14,7 +19,7 @@ export default function Index() {
 
       <OrderLog />
 
-      <TouchableOpacity onPress={() => router.push('/session-screen')} className="bg-primary p-4 rounded-xl mx-6 my-4">
+      <TouchableOpacity onPress={addPense} className="bg-primary p-4 rounded-xl mx-6 my-4">
         <Text className="text-white text-center text-lg font-semibold">Add Pense</Text>
       </TouchableOpacity>
     
