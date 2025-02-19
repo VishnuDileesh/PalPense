@@ -6,11 +6,14 @@ import OrderLog from '../../../components/OrderLog';
 import OrderInput from '../../../components/OrderInput';
 import Header from '../../../components/Header';
 import usePenseStore from '../../../store/penseStore';
-import { Text } from 'react-native';
 
 const SessionScreen = () => {
 
   const { currentPenseId } = usePenseStore();
+
+  console.log(currentPenseId)
+
+  
 
   return (
     <SafeAreaView className='h-full bg-white'>

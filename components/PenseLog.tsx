@@ -1,12 +1,13 @@
-import { View, Text, FlatList } from 'react-native'
+import { View, Text, FlatList, Pressable } from 'react-native'
 import React from 'react'
 
 import usePenseStore from '../store/penseStore'
+import { router } from 'expo-router'
 
 
 const PenseLog = () => {
 
-    const { penses } = usePenseStore()
+    const { penses, setCurrentPenseId } = usePenseStore()
 
   return (
     penses.length === 0 ? (
@@ -23,11 +24,13 @@ const PenseLog = () => {
             data={penses}
             keyExtractor={(pense) => pense.id.toString()}
             renderItem={({ item }) => (
-            <View className="bg-white p-3 rounded-xl my-1 mx-3 shadow-md self-end">
-                <Text className="text-lg text-primary">
-                {item.id} | {item.totalAmount} 
-                </Text>
-            </View>
+            <Pressable onPress={() => { setCurrentPenseId(item.id); router.push('/session-screen')}}>
+                <View className="bg-white p-3 rounded-xl my-1 mx-3 shadow-md self-end">
+                    <Text className="text-lg text-primary">
+                    {item.id} | {item.totalAmount} 
+                    </Text>
+                </View>
+            </Pressable>
             )}
                 />
         )

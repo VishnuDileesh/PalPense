@@ -2,12 +2,21 @@ import { SafeAreaView, TouchableOpacity, Text } from "react-native";
 import Header from "../../../components/Header";
 import TotalCard from "../../../components/TotalCard";
 import { router } from "expo-router";
+import { useFocusEffect } from '@react-navigation/native'
 import usePenseStore from "@/store/penseStore";
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import PenseLog from "@/components/PenseLog";
 
 export default function Index() {
-  const { penses, fetchPenses, addPense: createPense } = usePenseStore();
+  const { penses, fetchPenses, setCurrentPenseId, addPense: createPense } = usePenseStore();
+
+
+  useFocusEffect(
+    useCallback(() => {
+      console.log('SessionScreen mounted');
+      return () => setCurrentPenseId('');
+    }, [])
+  );
 
   useEffect(() => {
     fetchPenses();
