@@ -8,12 +8,16 @@ import { randomUUID } from 'expo-crypto';
 
 const TotalCard = ({initialStoreName}: {initialStoreName: string} ) => {
 
+  const { currentPenseId, currentPense, fetchPenseTotalAmount, setStoreId, storeId } = usePenseStore();
+
     const [storeName, setStoreName] = useState(initialStoreName || 'Tea Mania');
-    // const [totalAmount, setTotalAmount] = useState(0);
-    const { currentPenseId, currentPense, fetchPenseTotalAmount, setStoreId } = usePenseStore();
 
 
     useEffect(() => {
+
+      if (!storeId) {
+        setStoreName(initialStoreName);
+      }
 
 
       fetchPenseTotalAmount(currentPenseId || '');
@@ -51,9 +55,6 @@ const TotalCard = ({initialStoreName}: {initialStoreName: string} ) => {
         .innerJoin(items, eq(orders.itemId, items.id))
         .where(eq(orders.penseId, currentPenseId));
 
-        console.log('result', result)
-
-        // setTotalAmount(result[0]?.totalAmount || 0);
       }
       fetchOrderTotal();
     }, [currentPenseId]);

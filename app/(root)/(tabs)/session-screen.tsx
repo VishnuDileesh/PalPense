@@ -12,13 +12,14 @@ import type { Pense } from '../../../store/penseStore';
 
 const SessionScreen = () => {
 
-  const { setCurrentPenseId, setCurrentPense } = usePenseStore();
+  const { setCurrentPenseId, setCurrentPense, setStoreId } = usePenseStore();
 
   useFocusEffect(
     useCallback(() => {
       return () => {
         setCurrentPenseId('');
         setCurrentPense({} as Pense);
+        setStoreId('');
       };
     }, [])
   );

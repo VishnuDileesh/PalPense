@@ -9,6 +9,7 @@ interface Order {
     id: number;
     qty: number;
     item: string;
+    itemPrice: number;
     person: string;
   }
   
@@ -37,10 +38,13 @@ const useOrderStore = create<OrderStore>((set) => ({
             id: parseInt(row.orders.id),
             qty: row.orders.quantity,
             item: row.items?.itemName || '',
+            itemPrice: row.items?.itemPrice || null,
             person: row.users?.userName || ''
         }));
+
+        console.log('transformedOrders', transformedOrders)
             
-            set({ orders: transformedOrders });
+            set({ orders: transformedOrders as Order[] });
         } catch (error) {
             console.error('Error fetching orders:', error);
         }
@@ -67,7 +71,7 @@ const useOrderStore = create<OrderStore>((set) => ({
                 const insertedItems = await db.insert(items).values({
                     id: randomUUID(),
                     itemName: order.item,   
-                    itemPrice: 5,
+                    itemPrice: 0,
                     storeId: storeId,
                     createdAt: new Date()
                 }).returning();
