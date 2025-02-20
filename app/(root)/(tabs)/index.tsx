@@ -8,15 +8,8 @@ import { useEffect, useCallback } from "react";
 import PenseLog from "@/components/PenseLog";
 
 export default function Index() {
-  const { penses, fetchPenses, setCurrentPenseId, addPense: createPense } = usePenseStore();
+  const { penses, fetchPenses, addPense: createPense } = usePenseStore();
 
-
-  useFocusEffect(
-    useCallback(() => {
-      console.log('SessionScreen mounted');
-      return () => setCurrentPenseId('');
-    }, [])
-  );
 
   useEffect(() => {
     fetchPenses();
@@ -42,7 +35,7 @@ export default function Index() {
   return (
     <SafeAreaView className='h-full bg-white'>
       <Header />
-      <TotalCard total={`₹${total.toFixed(2)}`} initialStoreName="Jan" />
+      <TotalCard initialStoreName="Jan" />
       <PenseLog />
 
       <TouchableOpacity onPress={addPense} className="bg-primary p-4 rounded-xl mx-6 my-4">

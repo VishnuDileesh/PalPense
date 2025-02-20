@@ -1,12 +1,25 @@
 import { View, Text, ScrollView, FlatList } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import useOrderStore from '../store/orderStore'
-
+import usePenseStore from '../store/penseStore'
 
 const OrderLog = () => {
 
-    const { orders } = useOrderStore()
+    const { orders, fetchOrders } = useOrderStore()
+    const { currentPenseId } = usePenseStore();
+
+    useEffect(() => {
+        if (currentPenseId) {
+            fetchOrders(currentPenseId);
+        }
+    }, [currentPenseId]);
+
+
+
+
+
+
   return (
     orders.length === 0 ? (
         <View className='bg-white rounded-2xl p-4 shadow-md mx-6 mt-4 px-2 flex-1 justify-center items-center'>

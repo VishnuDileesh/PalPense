@@ -1,13 +1,17 @@
-import { View, TextInput, TouchableOpacity, Text, Keyboard } from "react-native"
+import { View, TextInput, TouchableOpacity, Keyboard } from "react-native"
 import React, { useState } from 'react'
 
 import { FontAwesome } from '@expo/vector-icons';
 
 import useOrderStore from "../store/orderStore"
-
+import usePenseStore from "../store/penseStore"
 const OrderInput = () => {
 
     const { addOrder } = useOrderStore()
+    const { currentPenseId, storeId } = usePenseStore();
+
+    console.log('currentPenseId', currentPenseId)
+
 
     const [input, setInput] = useState("");
 
@@ -18,7 +22,13 @@ const OrderInput = () => {
 
         if (match) {
           const [, qty, item, person] = match;
-          addOrder({ id: Date.now(), qty: Number(qty), item, person });
+
+          if (!currentPenseId) {
+            console.log("No current pense id");
+            return;
+          }
+
+          addOrder({ id: Date.now(), qty: Number(qty), item, person }, currentPenseId, storeId || '');
       
           setInput(""); 
           Keyboard.dismiss(); 

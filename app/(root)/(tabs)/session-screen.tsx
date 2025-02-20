@@ -6,21 +6,29 @@ import OrderLog from '../../../components/OrderLog';
 import OrderInput from '../../../components/OrderInput';
 import Header from '../../../components/Header';
 import usePenseStore from '../../../store/penseStore';
+import { useFocusEffect } from '@react-navigation/native';
+import { useCallback } from 'react';
+import type { Pense } from '../../../store/penseStore';
 
 const SessionScreen = () => {
 
-  const { currentPenseId } = usePenseStore();
+  const { setCurrentPenseId, setCurrentPense } = usePenseStore();
 
-  console.log(currentPenseId)
-
-  
+  useFocusEffect(
+    useCallback(() => {
+      return () => {
+        setCurrentPenseId('');
+        setCurrentPense({} as Pense);
+      };
+    }, [])
+  );
 
   return (
     <SafeAreaView className='h-full bg-white'>
       
       <Header />
 
-      <TotalCard total="₹245" initialStoreName="Tea Mania" />
+      <TotalCard initialStoreName={'Tea Mania'} />
 
       <OrderLog />
       
